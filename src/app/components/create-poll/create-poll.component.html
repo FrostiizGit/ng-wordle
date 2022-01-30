@@ -1,0 +1,33 @@
+<h2>WIP</h2>
+<div class="form-container">
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <nz-form-item class="form-item-col">
+            <nz-form-control nzErrorTip="Please write something here!">
+                <textarea formControlName="questionTitle" nz-input rows="2"
+                    placeholder="Enter your poll question here"></textarea>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *ngFor="let control of listOfControl; let i = index">
+            <nz-form-control nzErrorTip="Please input passenger's name or delete this field.">
+                <div class="new-field-row ">
+                    <input class="passenger-input" nz-input placeholder="Enter poll option" [attr.id]="control.id"
+                        [formControlName]="control.controlInstance" />
+                    <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button"
+                        (click)="removeField(control, $event)"></i>
+                </div>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-control>
+                <button nz-button nzType="dashed" class="add-button" (click)="addField($event)">
+                    <i nz-icon nzType="plus"></i>
+                    Add other choice
+                </button>
+            </nz-form-control>
+        </nz-form-item>
+
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Create</button>
+    </form>
+</div>
