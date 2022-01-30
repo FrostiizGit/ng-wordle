@@ -16,7 +16,6 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { ViewAllPollsComponent } from './components/view-all-polls/view-all-polls.component';
 import { PollCardComponent } from './components/poll-card/poll-card.component';
 import { NzCardModule } from 'ng-zorro-antd/card';
-import { NewPollComponent } from './components/new-poll/new-poll.component';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { PollVoteComponent } from './components/poll-vote/poll-vote.component';
@@ -36,7 +35,6 @@ registerLocaleData(en);
     HeaderComponent,
     ViewAllPollsComponent,
     PollCardComponent,
-    NewPollComponent,
     PollVoteComponent,
     CreatePollComponent
   ],
