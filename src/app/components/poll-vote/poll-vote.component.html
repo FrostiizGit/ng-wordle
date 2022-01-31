@@ -1,8 +1,8 @@
 <div *ngIf="poll" class="poll-container">
-    <h2>{{poll.title}}</h2>
-    <nz-radio-group [(ngModel)]="radioValue">
-        <label nz-radio *ngFor="let answer of poll.answers; let i = index;" nzValue={{answer._id}}>{{ answer.text }}</label>
-    </nz-radio-group>
-    <button nz-button nzType="primary" (click)="voteClick()">Vote Now !</button>
-    <p *ngIf="poll.totalVotes">{{poll.totalVotes}} people already voted</p>    
+  <h2>{{poll.title}}</h2>
+  <nz-radio-group [(ngModel)]="radioValue">
+    <label nz-radio *ngFor="let answer of poll.answers; let i = index;" nzValue={{answer._id}}>{{ answer.text }}</label>
+  </nz-radio-group>
+  <button nz-button nzType="primary" (click)="voteClick()">Vote Now !</button>
+  <p *ngIf="poll.totalVotes">{{poll.totalVotes}} people already voted</p>
 </div>

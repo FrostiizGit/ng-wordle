@@ -1,19 +1,19 @@
-<nz-card style="width:300px;" nzTitle="Card title" [nzExtra]="extraTemplate">
-    <nz-card-tab>
-        <nz-tabset nzSize="large" [(nzSelectedIndex)]="isInfoView">
-          <nz-tab nzTitle="Info"></nz-tab>
-          <nz-tab nzTitle="Results"></nz-tab>
-        </nz-tabset>
-      </nz-card-tab>
-      <div *ngIf="!isInfoView">
-        <h3>{{poll.title}}</h3>
-        <p>Creator: {{poll.creator}}</p>
-        <p>Total votes: {{poll.totalVotes}}</p>
-      </div>
-      <div *ngIf="isInfoView">
-        <nz-progress *ngFor="let a of poll.answers; let index = index;" [nzPercent]="answersPercent[index]"></nz-progress>
-      </div>
-  </nz-card>
-  <ng-template #extraTemplate>
-    <a routerLink="/vote/{{poll._id}}">Vote NOW</a>
-  </ng-template>
+<nz-card nzTitle="{{cardTitle}}" [nzExtra]="extraTemplate">
+  <nz-card-tab>
+    <nz-tabset nzSize="large" [(nzSelectedIndex)]="isInfoView">
+      <nz-tab nzTitle="{{infoTabTitle}}"></nz-tab>
+      <nz-tab nzTitle="{{resultsTabTitle}}"></nz-tab>
+    </nz-tabset>
+  </nz-card-tab>
+  <div *ngIf="!isInfoView">
+    <h3>{{poll.title}}</h3>
+    <p>Creator: {{poll.creator}}</p>
+    <p>Total votes: {{poll.totalVotes}}</p>
+  </div>
+  <div *ngIf="isInfoView">
+    <nz-progress *ngFor="let a of poll.answers; let index = index;" [nzPercent]="answersPercent[index]"></nz-progress>
+  </div>
+</nz-card>
+<ng-template #extraTemplate>
+  <a routerLink="/vote/{{poll._id}}">Vote NOW</a>
+</ng-template>

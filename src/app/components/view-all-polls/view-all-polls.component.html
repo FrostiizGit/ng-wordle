@@ -1,4 +1,6 @@
 <nz-content>
-    <h2>View all currently opened polls</h2>
-    <app-poll-card *ngFor="let i of polls" [poll]="i"></app-poll-card>
+  <h2>View all currently opened polls</h2>
+  <div class="container-hor">
+    <app-poll-card *ngFor="let p of polls; let i = index;" [poll]="p" [pollNumber]="i + 1"></app-poll-card>
+  </div>
 </nz-content>

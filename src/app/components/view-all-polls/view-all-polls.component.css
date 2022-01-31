@@ -1,6 +1,12 @@
 nz-content {
-    background: #fff;
-    padding: 24px;
-    min-height: 280px;
-    height: 100%;
-  }
+  background: #fff;
+  padding: 24px;
+  min-height: 280px;
+  height: 100%;
+}
+
+.container-hor {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

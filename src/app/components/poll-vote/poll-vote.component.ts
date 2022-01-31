@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { IPoll, IPollIds } from 'src/app/interfaces/poll-interfaces';
-import { HttpClientService } from 'src/app/services/http-client.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {IPoll, IPollIds} from 'src/app/interfaces/poll-interfaces';
+import {HttpClientService} from 'src/app/services/http-client.service';
 
 @Component({
   selector: 'app-poll-vote',
@@ -13,12 +13,12 @@ export class PollVoteComponent implements OnInit {
   poll!: IPoll;
   radioValue: string = '';
 
-  constructor(private route: ActivatedRoute, private http: HttpClientService, private router: Router) { }
-
+  constructor(private route: ActivatedRoute, private http: HttpClientService, private router: Router) {
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
-    if(id) {
+    if (id) {
       this.pollId = id;
       this.http.getPoll(id).subscribe(data => this.poll = data);
     }
@@ -30,10 +30,9 @@ export class PollVoteComponent implements OnInit {
         pollId: this.poll._id,
         answerId: this.radioValue
       }
-      this.http.postPollVote(pollIds).subscribe(res => {
-        this.router.navigate(['']);
+      this.http.postPollVote(pollIds).subscribe(async () => {
+        await this.router.navigate(['']);
       });
     }
   }
-
 }

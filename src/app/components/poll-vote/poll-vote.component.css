@@ -1,16 +1,15 @@
 [nz-radio] {
-    display: block;
-    height: 32px;
-    line-height: 32px;
+  display: block;
+  height: 32px;
+  line-height: 32px;
 }
 
 input {
-    width: 100px;
-    margin-left: 10px;
+  width: 100px;
+  margin-left: 10px;
 }
 
 [nz-button] {
-  margin-top: 10px;
   width: 120px;
   margin: 10px 0 10px 0;
 }
@@ -24,8 +23,7 @@ nz-radio-group {
   flex-direction: column;
   max-width: 500px;
   width: fit-content;
-  margin: auto;
-  margin-top: 10px;
+  margin: 10px auto auto auto;
   background: #fff;
   padding: 10px 20px 10px 20px;
 }

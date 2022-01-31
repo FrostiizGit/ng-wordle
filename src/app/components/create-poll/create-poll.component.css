@@ -13,6 +13,7 @@
 .login-form-button {
   width: 100%;
 }
+
 .form-container {
   display: flex;
   justify-content: center;
@@ -36,7 +37,7 @@
   color: #777;
 }
 
-.passenger-input {
+.answer-input {
   width: 100%;
   margin-right: 8px;
 }

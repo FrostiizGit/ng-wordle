@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { IPoll } from 'src/app/interfaces/poll-interfaces';
-import { HttpClientService } from 'src/app/services/http-client.service';
+import {Component, OnInit} from '@angular/core';
+import {IPoll} from 'src/app/interfaces/poll-interfaces';
+import {HttpClientService} from 'src/app/services/http-client.service';
 
 @Component({
   selector: 'app-view-all-polls',
@@ -10,7 +10,8 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 export class ViewAllPollsComponent implements OnInit {
   polls: IPoll[] = [];
 
-  constructor(private httpService: HttpClientService) { }
+  constructor(private httpService: HttpClientService) {
+  }
 
   ngOnInit(): void {
     this.httpService.getAllPolls().subscribe(polls => this.polls = polls);
