@@ -11,6 +11,10 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   validateForm!: FormGroup;
+  // Used by the modal
+  isVisible = false;
+  isOkLoading = false;
+  userToDelete: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -47,5 +51,26 @@ export class LoginComponent implements OnInit {
       });
     }
   }
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    this.isOkLoading = true;
+    if (this.userToDelete) {
+      console.log(this.userToDelete)
+      this.http.deleteAccount(this.userToDelete).subscribe(() => {
+        this.userToDelete = '';
+        this.isVisible = false;
+        this.isOkLoading = false;
+      })
+    }
+  }
+
+  handleCancel(): void {
+    this.isVisible = false;
+  }
+
 
 }

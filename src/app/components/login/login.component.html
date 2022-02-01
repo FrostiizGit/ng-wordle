@@ -15,8 +15,8 @@
       </nz-form-control>
     </nz-form-item>
     <div nz-row class="login-form-margin">
-      <div nz-col [nzSpan]="12">
-        <a class="login-form-forgot">Forgot password</a>
+      <div nz-col>
+        <a class="login-form-forgot" (click)="showModal()">Delete my account & polls</a>
       </div>
     </div>
     <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
@@ -24,4 +24,27 @@
     <a routerLink="/register">register now!</a>
   </form>
 </div>
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Modal Title"
+  [nzContent]="modalContent"
+>
+  <ng-template #modalContent>
+    <p>This will delete your account and the polls you've created because this demo app doesn't use mail address</p>
+    <p>Yes anyone can delete your account :D</p>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your username!">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input [(ngModel)]="userToDelete" placeholder="Username"/>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  </ng-template>
+
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+    <button nz-button nzType="primary" nzDanger (click)="handleOk()" [nzLoading]="isOkLoading">Delete my account
+    </button>
+  </div>
+</nz-modal>
 

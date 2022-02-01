@@ -10,8 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import en from '@angular/common/locales/en';
 
 // Ant Design modules
-import {NZ_I18N} from 'ng-zorro-antd/i18n';
-import {en_US} from 'ng-zorro-antd/i18n';
+import {en_US, NZ_I18N} from 'ng-zorro-antd/i18n';
 import {NzLayoutModule} from 'ng-zorro-antd/layout';
 import {NzMenuModule} from 'ng-zorro-antd/menu';
 import {NzCardModule} from 'ng-zorro-antd/card';
@@ -23,7 +22,8 @@ import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
 import {NzIconModule} from 'ng-zorro-antd/icon';
-import { NzTableModule } from 'ng-zorro-antd/table';
+import {NzTableModule} from 'ng-zorro-antd/table';
+import {NzModalModule} from 'ng-zorro-antd/modal';
 
 // Components imports
 import {AppComponent} from './app.component';
@@ -32,9 +32,9 @@ import {ViewAllPollsComponent} from './components/view-all-polls/view-all-polls.
 import {PollCardComponent} from './components/poll-card/poll-card.component';
 import {PollVoteComponent} from './components/poll-vote/poll-vote.component';
 import {CreatePollComponent} from './components/create-poll/create-poll.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { MyPollsComponent } from './components/my-polls/my-polls.component';
+import {LoginComponent} from './components/login/login.component';
+import {RegisterComponent} from './components/register/register.component';
+import {MyPollsComponent} from './components/my-polls/my-polls.component';
 
 registerLocaleData(en);
 
@@ -68,7 +68,8 @@ registerLocaleData(en);
     NzInputModule,
     NzCheckboxModule,
     NzIconModule,
-    NzTableModule
+    NzTableModule,
+    NzModalModule
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}],
   bootstrap: [AppComponent]

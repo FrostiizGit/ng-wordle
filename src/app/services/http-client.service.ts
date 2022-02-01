@@ -67,4 +67,9 @@ export class HttpClientService {
     const fullUrl = `${this.apiUrl}/delete/${pollId}`;
     return this.http.delete<boolean>(fullUrl, HttpClientService.setAuthHeaders(token))
   }
+
+  deleteAccount(username: string): Observable<boolean> {
+    const fullUrl = `${this.authUrl}/forgot/${username}`;
+    return this.http.delete<boolean>(fullUrl);
+  }
 }
