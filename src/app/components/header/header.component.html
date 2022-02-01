@@ -1,13 +1,23 @@
 <nz-header>
   <div class="logo">Strawpoll Lidl</div>
-  <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-    <li nz-menu-item nzSelected>
-      <a routerLink="">All polls</a>
-    </li>
-    <li nz-menu-item>
-      <a routerLink="/new">Create poll</a>
-    </li>
-    <button nz-button nzType="primary" nzDanger>Disconnect</button>
-  </ul>
+  <div class="header-container">
+    <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+      <li nz-menu-item nzSelected>
+        <a routerLink="">All polls</a>
+      </li>
+      <li nz-menu-item *ngIf="isLoggedIn">
+        <a routerLink="/new">Create poll</a>
+      </li>
+      <li nz-menu-item *ngIf="isLoggedIn">
+        <a routerLink="/my-poll">My polls</a>
+      </li>
+    </ul>
+    <div>
+      <span class="user-text">{{username}}</span>
+      <button nz-button nzType="primary" nzDanger (click)="logout()">
+        <i nz-icon nzType="disconnect" nzTheme="outline"></i>Logout</button>
+    </div>
+  </div>
+  
 
 </nz-header>

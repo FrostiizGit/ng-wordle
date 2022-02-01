@@ -8,3 +8,13 @@
 .header-menu {
   line-height: 64px;
 }
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-text {
+  color: #fff;
+  margin-right: 1rem;
+}

@@ -23,6 +23,7 @@ import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
 import {NzIconModule} from 'ng-zorro-antd/icon';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 // Components imports
 import {AppComponent} from './app.component';
@@ -33,6 +34,7 @@ import {PollVoteComponent} from './components/poll-vote/poll-vote.component';
 import {CreatePollComponent} from './components/create-poll/create-poll.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { MyPollsComponent } from './components/my-polls/my-polls.component';
 
 registerLocaleData(en);
 
@@ -45,7 +47,8 @@ registerLocaleData(en);
     PollVoteComponent,
     CreatePollComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MyPollsComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,8 @@ registerLocaleData(en);
     NzFormModule,
     NzInputModule,
     NzCheckboxModule,
-    NzIconModule
+    NzIconModule,
+    NzTableModule
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}],
   bootstrap: [AppComponent]
