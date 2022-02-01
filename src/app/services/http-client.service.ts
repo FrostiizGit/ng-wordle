@@ -29,7 +29,7 @@ export class HttpClientService {
   }
 
   getPoll(id: string): Observable<IPoll> {
-    const fullUrl = `${this.apiUrl}/${id}`;
+    const fullUrl = `${this.apiUrl}/id/${id}`;
     return this.http.get<IPoll>(fullUrl, httpOptions);
   }
 
@@ -56,5 +56,15 @@ export class HttpClientService {
   login(user: any): Observable<any> {
     const fullUrl = `${this.authUrl}/login`;
     return this.http.post(fullUrl, user, httpOptions);
+  }
+
+  getUserPolls(token: string): Observable<IPoll[]> {
+    const fullUrl = `${this.apiUrl}/user`;
+    return this.http.get<IPoll[]>(fullUrl, HttpClientService.setAuthHeaders(token));
+  }
+
+  deletePoll(pollId: string, token: string): Observable<boolean> {
+    const fullUrl = `${this.apiUrl}/delete/${pollId}`;
+    return this.http.delete<boolean>(fullUrl, HttpClientService.setAuthHeaders(token))
   }
 }
