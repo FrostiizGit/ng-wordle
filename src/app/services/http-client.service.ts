@@ -14,8 +14,18 @@ const httpOptions: { headers: HttpHeaders} = {
 })
 export class HttpClientService {
   private apiUrl: string = 'http://localhost:3000/poll';
+  private authUrl: string = 'http://localhost:3000/auth'
 
   constructor(private http: HttpClient) {
+  }
+
+  private static setAuthHeaders(token: string): { headers: HttpHeaders } {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+    }
   }
 
   getPoll(id: string): Observable<IPoll> {
@@ -32,8 +42,19 @@ export class HttpClientService {
     return this.http.post<IPoll>(fullUrl, pollIds);
   }
 
-  createPoll(newPoll: IPollNew): Observable<IPoll> {
+  createPoll(newPoll: IPollNew, token: string): Observable<IPoll> {
     const fullUrl = `${this.apiUrl}/new`;
-    return this.http.post<IPoll>(fullUrl, newPoll);
+
+    return this.http.post<IPoll>(fullUrl, newPoll, HttpClientService.setAuthHeaders(token));
+  }
+
+  register(newUser: any): Observable<any> {
+    const fullUrl = `${this.authUrl}/register`;
+    return this.http.post(fullUrl, newUser, httpOptions);
+  }
+
+  login(user: any): Observable<any> {
+    const fullUrl = `${this.authUrl}/login`;
+    return this.http.post(fullUrl, user, httpOptions);
   }
 }

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
 import {IPollNew, IPollNewAnswers} from 'src/app/interfaces/poll-interfaces';
 import {HttpClientService} from 'src/app/services/http-client.service';
+import {LocalStorageService} from "../../services/local-storage.service";
 
 interface IFieldControl {
   id: number,
@@ -17,8 +18,13 @@ interface IFieldControl {
 export class CreatePollComponent implements OnInit {
   validateForm!: FormGroup;
   listOfControl: Array<IFieldControl> = [];
+  token: string | null = null;
 
-  constructor(private fb: FormBuilder, private http: HttpClientService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClientService,
+    private router: Router,
+    private ls: LocalStorageService) {
   }
 
   submitForm(): void {
@@ -33,10 +39,13 @@ export class CreatePollComponent implements OnInit {
           }
         })
       };
-
-      this.http.createPoll(newPoll).subscribe(async () => {
-        await this.router.navigate(['']);
-      })
+      if(this.token !== null) {
+        this.http.createPoll(newPoll, this.token).subscribe(async () => {
+          await this.router.navigate(['']);
+        })
+      } else {
+        console.log('Huh oh should be logged in');
+      }
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
@@ -48,6 +57,7 @@ export class CreatePollComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.token = this.ls.get('token');
     this.validateForm = this.fb.group({
       questionTitle: [null, [Validators.required]]
     });
