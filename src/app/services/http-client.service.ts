@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {IPoll, IPollIds, IPollNew} from '../interfaces/poll-interfaces';
+import {environment} from "../../environments/environment";
 
 const httpOptions: { headers: HttpHeaders} = {
   headers: new HttpHeaders({
@@ -13,8 +14,8 @@ const httpOptions: { headers: HttpHeaders} = {
   providedIn: 'root'
 })
 export class HttpClientService {
-  private apiUrl: string = 'http://localhost:3000/poll';
-  private authUrl: string = 'http://localhost:3000/auth'
+  private apiUrl: string = environment.apiUrl;
+  private authUrl: string = environment.authUrl;
 
   constructor(private http: HttpClient) {
   }
